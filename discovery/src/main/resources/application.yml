@@ -1,6 +1,10 @@
 spring:
   application:
     name: registry
+  datasource:
+    url: jdbc:mysql://localhost:3306/aulamicroservices?allowPublicKeyRetrieval=true&sslMode=DISABLED
+    username: root
+    password: 123
 server:
   port: 8081
 
@@ -10,3 +14,4 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://localhost:${server.port}/eureka/
+

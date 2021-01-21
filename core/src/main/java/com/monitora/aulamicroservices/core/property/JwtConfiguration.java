@@ -15,7 +15,7 @@ public class JwtConfiguration {
     private String loginUrl = "/login/**";
     private Header header = new Header();
     private int expiration = 3600;
-    private String privateKey = "";
+    private String privateKey = "ded4649d55b3de04322adc69911aa020";
     private String type = "encrypted";
 
     @Getter
