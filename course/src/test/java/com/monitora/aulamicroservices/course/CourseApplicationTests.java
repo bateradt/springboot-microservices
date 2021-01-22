@@ -1,4 +1,4 @@
-package com.monitora.aulamicroservices.gateway.course;
+package com.monitora.aulamicroservices.course;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
