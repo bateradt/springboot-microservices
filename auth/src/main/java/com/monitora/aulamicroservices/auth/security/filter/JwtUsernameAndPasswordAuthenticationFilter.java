@@ -3,7 +3,7 @@ package com.monitora.aulamicroservices.auth.security.filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.monitora.aulamicroservices.core.model.ApplicationUser;
 import com.monitora.aulamicroservices.core.property.JwtConfiguration;
-import com.monitora.aulamicroservices.token.creator.TokenCreator;
+import com.monitora.aulamicroservices.security.token.creator.TokenCreator;
 import com.nimbusds.jwt.SignedJWT;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

@@ -1,10 +1,10 @@
-package com.monitora.aulamicroservices;
+package com.monitora.aulamicroservices.gateway.course;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GatewayApplicationTests {
+class CourseApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,4 +1,4 @@
-package com.monitora.aulamicroservices.token.creator;
+package com.monitora.aulamicroservices.security.token.creator;
 
 import com.monitora.aulamicroservices.core.model.ApplicationUser;
 import com.monitora.aulamicroservices.core.property.JwtConfiguration;

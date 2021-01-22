@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import javax.persistence.Entity;
-
 @SpringBootApplication
 @EntityScan({"com.monitora.aulamicroservices.core.model"})
 @EnableJpaRepositories({"com.monitora.aulamicroservices.core.repository"})
