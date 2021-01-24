@@ -59,10 +59,12 @@ public class TokenCreator {
 
     private JWTClaimsSet createJWTClaimSet(Authentication auth, ApplicationUser applicationUser) {
         log.info("Creating the JwtClaimSet Object for '{}'", applicationUser);
-        return new JWTClaimsSet.Builder().subject(applicationUser.getUsername()).claim("authorities", auth.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(toList()))
+        return new JWTClaimsSet.Builder()
+                .subject(applicationUser.getUsername())
+                .claim("authorities", auth.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(toList()))
                 .issuer("http://brblackcode.marcelo")
                 .issueTime(new Date())
-                .expirationTime(new Date(System.currentTimeMillis() + (jwtConfiguration.getExpiration() * 1000)))
+                .expirationTime(new Date(System.currentTimeMillis() + (jwtConfiguration.getExpiration() * 1000L)))
                 .build();
     }
 

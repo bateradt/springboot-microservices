@@ -1,4 +1,4 @@
-package com.monitora.aulamicroservices.config;
+package com.monitora.aulamicroservices.token.config;
 
 
 import com.monitora.aulamicroservices.core.property.JwtConfiguration;
@@ -17,12 +17,16 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
+        http.csrf().disable()
+                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().exceptionHandling().authenticationEntryPoint((req, resp, e) -> resp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
                 .and()
-                .authorizeRequests().antMatchers(jwtConfiguration.getLoginUrl()).permitAll()
-                .antMatchers("/course/admin/**").hasRole("ADMIN")
+                .authorizeRequests().
+                antMatchers(jwtConfiguration.getLoginUrl()).permitAll()
+//                .antMatchers("/course/admin/**").hasRole("ADMIN")
+                .antMatchers("/aulamicroservices/v1/admin/**").hasRole("ADMIN")
+                .antMatchers("/auth/user/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().authenticated();
 
     }

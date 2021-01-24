@@ -1,5 +1,6 @@
 package com.monitora.aulamicroservices.core.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApplicationUser implements AbstractEntity {
 
     @Id
@@ -32,6 +34,7 @@ public class ApplicationUser implements AbstractEntity {
 
     @NotNull(message = "The field 'role' is required")
     @Column(nullable = false)
+//    @Builder.Default //isso estava dando pau nas rotas, dava erro 404 se ele estiver ativo....
     private String role = "USER";
 
     public ApplicationUser(@NotNull ApplicationUser applicationUser) {

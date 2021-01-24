@@ -39,7 +39,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     private static final class CustomUserDetails extends ApplicationUser implements UserDetails {
-
         //construtor da classe ApplicationUser, onde irá copiar os dados passados para o objeto
         CustomUserDetails(@NotNull ApplicationUser applicationUser) {
             super(applicationUser);
