@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.http.HttpMethod;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,9 +23,9 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().exceptionHandling().authenticationEntryPoint((req, resp, e) -> resp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
                 .and()
-                .authorizeRequests().
-                antMatchers(jwtConfiguration.getLoginUrl()).permitAll()
-//                .antMatchers("/course/admin/**").hasRole("ADMIN")
+                .authorizeRequests()
+                .antMatchers(jwtConfiguration.getLoginUrl(), "/**/swagger-ui.html", "/**/actuator/info").permitAll()
+                .antMatchers(HttpMethod.GET, "/**/swagger-resources/**", "/**/webjars/springfox-swagger-ui/**", "/**/v2/api-docs/**", "/**/swagger-ui").permitAll()
                 .antMatchers("/aulamicroservices/v1/admin/**").hasRole("ADMIN")
                 .antMatchers("/auth/user/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().authenticated();
